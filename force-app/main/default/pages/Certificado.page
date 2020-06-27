@@ -1,0 +1,33 @@
+<apex:page standardController="CertificadoConclusao__c" renderas="pdf" applyBodyTag="false">  
+    <head>
+        <style>
+            @page{
+                size: A4 landscape;
+            }            
+            body {
+                font-family: 'Arial Unicode MS';
+            }
+            .certificado {
+                font: bold 30px; color: red;
+            }  
+        </style>
+    </head>
+ 
+    <body>
+        <div class="certificado">
+        <center><h1>CERTIFICADO</h1></center>
+        </div>
+
+
+             <p>Este documento certifica que</p>
+             <center><h2>{!CertificadoConclusao__c.Contato__r.FirstName} {!CertificadoConclusao__c.Contato__r.LastName}  </h2> </center>
+            <p>  concluiu o curso  <span>"{!Certificadoconclusao__c.Product__r.Name}"</span>  em 
+                 <apex:outputText value="{0, date, d 'de' MMMM 'de' yyyy}">
+                     <apex:param value="{!CertificadoConclusao__c.Dataconclusao__c}"/>
+                 </apex:outputText>
+             </p>
+
+        <p>Código da certificação: {!CertificadoConclusao__c.Name}</p>
+    </body>
+
+</apex:page>
